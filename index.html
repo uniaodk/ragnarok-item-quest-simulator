@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Ragnarok Item Quest Simulator</title>
+</head>
+
+<body>
+
+  <form action="javascript: calculate()">
+    <p>Digite o rate</p>
+    <label for="rate">Rate</label>
+    <input id="rate" type="number">
+
+    <p>Escolha o tabela de experiência:</p>
+    <input id="normal" type="radio" name="exp_table" value="normal" checked>
+    <label for="normal">Normal</label>
+
+    <input id="transcendent" type="radio" name="exp_table" value="transcendent">
+    <label for="transcendent">Transclasse</label>
+
+    <p>Defina os levels de UP:</p>
+    <label for="lvlCurrent">Level Atual</label>
+    <input id="lvlCurrent" type="number" min="1" max="99">
+
+    <label for="lvlGoal">Level Final</label>
+    <input id="lvlGoal" type="number" min="1" max="99">
+
+    <button type="submit">Calcular</button>
+  </form>
+</body>
+
+<script src="./data/exp_dict.js"></script>
+<script src="./main.js"></script>
+
+</html>
