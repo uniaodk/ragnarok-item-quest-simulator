@@ -9,31 +9,87 @@
 </head>
 
 <body>
+  <div class="flex_row center">
+    <div>
+      <form id="formCalculator" action="javascript: void(0);">
+        <div class="rate">
+          <p>Digite o rate do personagem</p>
 
-  <form action="javascript: calculate()">
-    <p>Digite o rate</p>
-    <label for="rate">Rate</label>
-    <input id="rate" type="number">
+          <div class="flex_row">
+            <label for="rate">Rate</label>
+            <input id="rate" type="number" min="1" max="25" value="1">
+          </div>
+        </div>
 
-    <p>Escolha o tabela de experiência:</p>
-    <input id="normal" type="radio" name="exp_table" value="normal" checked>
-    <label for="normal">Normal</label>
+        <hr>
 
-    <input id="transcendent" type="radio" name="exp_table" value="transcendent">
-    <label for="transcendent">Transclasse</label>
+        <div class="experience">
+          <p>Escolha o tipo de tabela de experiência</p>
 
-    <p>Defina os levels de UP:</p>
-    <label for="lvlCurrent">Level Atual</label>
-    <input id="lvlCurrent" type="number" min="1" max="99">
+          <div>
+            <input id="normal" type="radio" name="exp_table" value="normal" checked>
+            <label for="normal">Normal</label>
+          </div>
+        
+          <div>
+            <input id="transcendent" type="radio" name="exp_table" value="transcendent">
+            <label for="transcendent">Transclasse</label>
+          </div>
+        </div>
 
-    <label for="lvlGoal">Level Final</label>
-    <input id="lvlGoal" type="number" min="1" max="99">
+        <hr>
 
-    <button type="submit">Calcular</button>
-  </form>
+        <div class="level_up">
+          <p>Defina os limites de levels</p>
+
+          <div class="flex_row">
+            <label for="lvlCurrent">Level Atual</label>
+            <input id="lvlCurrent" type="number" min="1" max="99" value="18">
+          </div>
+          
+          <div class="flex_row">
+            <label for="lvlGoal">Level Final</label>
+            <input id="lvlGoal" type="number" min="1" max="99" value="19">
+          </div>
+        </div>
+        
+        <!--
+        <button id="form_submit" type="submit">Calcular</button>
+        -->
+      </form>
+    
+    <hr>
+      <div>
+        <table>
+          <tr>
+            <th>Item</th>
+            <th>Quantidade</th>
+            <th>Zeny</th>
+          </tr>
+          <tr>
+            <td>Hazelnut</td>
+            <td id="hazelnut_amount">15</td>
+            <td id="hazelnut_zeny">20</td>
+          </tr>
+          <tr>
+            <td>SharpLeaf</td>
+            <td id="sharpLeaf_amount">35</td>
+            <td id="sharpLeaf_zeny">40</td>
+          </tr>
+          <tr>
+            <td>GoatHorn</td>
+            <td id="goatHorn_amount">55</td>
+            <td id="goatHorn_zeny">60</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
 </body>
 
-<script src="./data/exp_dict.js"></script>
-<script src="./main.js"></script>
+<script src="./js/data/exp_dict.js"></script>
+<script src="./js/message.js"></script>
+<script src="./js/const.js"></script>
+<script src="./js/main.js"></script>
 
 </html>
