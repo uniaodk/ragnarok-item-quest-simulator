@@ -1,46 +1,42 @@
-function load_input_list() {
+function loadInputList() {
   const inputList = FORM_CALCULATOR.querySelectorAll('input');
   const inputArray = Array.from(inputList);
 
   inputArray.forEach(input => {
-    input.addEventListener('change', function() {
+    input.addEventListener('change', function () {
       calculate();
     });
   });
 }
 
 window.onload = function () {
-  load_input_list();
+  loadInputList();
 };
 
 
 function calculate() {
-  let expTableSelected = document.querySelector('input[name="exp_table"]:checked');
-  let levelCurrent = input_level_current();
-  let levelGoal = input_level_goal();
-  let rate = input_level_rate();
+  let inputExpTableChecked = document.querySelector('input[name="exp_table"]:checked');
+  let lvlCurrent = getLevelCurrent();
+  let lvlGoal = getLevelGoal();
+  let rate = getRate();
+  let baseExpList = getBaseExpList(inputExpTableChecked.value);
+  let currentItemQuest = getCurrentItemQuest(lvlCurrent, lvlGoal);
 
-  let baseExpRange = [...BASE_EXP[expTableSelected.value]];
-
-  for (let item of EXP_ITEMS) {
-    if (levelCurrent < item.minLvl) {
-      MESSAGE.insufficient_level(levelCurrent, item);
-      levelCurrent = item.minLvl;
-      break;
-    }
-
-    if (levelGoal < item.minLvl) break;
-  
-    const expRange = baseExpRange.splice(levelCurrent - 1, item.maxLvl);
-    const expTotal = expRange.reduce((e1, e2) => e1 + e2, 0);
-    const questUseAmount = parseInt(expTotal / (item.exp * rate));
-    const itemAmount = parseInt(questUseAmount * item.amount);
-    const itemCost = parseInt(itemAmount * item.zeny);
-  
-    levelCurrent = ++item.maxLvl;
-    console.log(item.name, expTotal, questUseAmount, itemAmount, itemCost, levelCurrent);
-
-    hazelnut_amount(questUseAmount);
-    hazelnut_zeny(itemCost);
+  const indexItemQuestUsageByLvl = {};
+  while (currentItemQuest) {
+    let expRequestedByLvl = baseExpList[lvlCurrent - 1];
+    const questUsageAmount = parseFloat(expRequestedByLvl / (currentItemQuest.exp * rate)).toFixed(2);
+    const itemAmount = parseFloat((questUsageAmount * currentItemQuest.amount).toFixed(2));
+    const itemCost = parseFloat((itemAmount * currentItemQuest.zeny).toFixed(2));
+    indexItemQuestUsageByLvl[lvlCurrent] = { item: currentItemQuest, amount: itemAmount, cost: itemCost };
+    currentItemQuest = getCurrentItemQuest(++lvlCurrent, lvlGoal);
   }
+  console.log(indexItemQuestUsageByLvl);
+  const indexByItemQuestTotal = Object.values(indexItemQuestUsageByLvl).reduce((index, itemByLvl) => {
+    index[itemByLvl.item.name] = index[itemByLvl.item.name] || { item: itemByLvl.item, amount: 0, cost: 0 };
+    index[itemByLvl.item.name].amount += itemByLvl.amount;
+    index[itemByLvl.item.name].cost += itemByLvl.cost;
+    return index;
+  }, {});
+  console.log(indexByItemQuestTotal);
 }

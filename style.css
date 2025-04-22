@@ -1,12 +1,14 @@
-div.flex_column {
+div.flex-column {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
-div.flex_row {
+
+div.flex-row {
     display: flex;
     flex-direction: row;
 }
+
 div.center {
     justify-content: center;
 }
@@ -15,9 +17,7 @@ table {
     text-align: center;
 }
 
-div.rate div.flex_row {
-    justify-content: space-between;
-}
-div.level_up div.flex_row {
+div.rate div.flex-row,
+div.level_up div.flex-row {
     justify-content: space-between;
 }
