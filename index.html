@@ -17,7 +17,7 @@
 
           <div class="flex-row">
             <label for="rate">Rate</label>
-            <input id="rate" type="number" min="1" max="25" value="1">
+            <input id="rate" type="number" min="1" max="8" value="1">
           </div>
         </div>
 
@@ -49,17 +49,55 @@
 
           <div class="flex-row">
             <label for="lvlGoal">Level Final</label>
-            <input id="lvlGoal" type="number" min="1" max="99" value="19">
+            <input id="lvlGoal" type="number" min="1" max="99" value="86">
           </div>
+        </div>
+
+        <hr>
+
+        <div id="questItems">
+          <p>Defina quais items de quest serão utilizados:</p>
         </div>
       </form>
     </div>
   </div>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="3">Total</th>
+        </tr>
+        <tr>
+          <th>Item</th>
+          <th>Qtd</th>
+          <th>Zeny</th>
+        </tr>
+      </thead>
+      <tbody id="itemsTotal">
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="4">Por Level</th>
+        </tr>
+        <tr>
+          <th>Level</th>
+          <th>Item</th>
+          <th>Qtd</th>
+          <th>Zeny</th>
+        </tr>
+      </thead>
+      <tbody id="itemByLvl">
+      </tbody>
+    </table>
+  </div>
 </body>
 
-<script src="./js/data/in18.js"></script>
-<script src="./js/data/dicts.js"></script>
+<script src="./js/db.js"></script>
+<script src="./js/in18.js"></script>
 <script src="./js/message.js"></script>
+<script src="./js/util.js"></script>
 <script src="./js/controller.js"></script>
 <script src="./js/main.js"></script>
 
