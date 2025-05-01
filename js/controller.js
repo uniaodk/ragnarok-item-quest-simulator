@@ -63,6 +63,7 @@ controller.roundAmountItems = (indexByItemQuestTotal) => {
     for (const [index, value] of Object.entries(indexByItemQuestTotal)) {
         const moduleAmount = indexByItemQuestTotal[index].amount % value.item.amount;
         indexByItemQuestTotal[index].amount += value.item.amount - moduleAmount;
+        indexByItemQuestTotal[index].cost = parseFloat((indexByItemQuestTotal[index].amount * (value.item.zeny || 0)).toFixed(2));
     }
 }
 
