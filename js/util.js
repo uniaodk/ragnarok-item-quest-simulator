@@ -5,3 +5,7 @@ util.toNode = (tagText) => {
   tempDiv.innerHTML = tagText;
   return tempDiv.firstChild;
 }
+
+util.formatCurrency = (amount, locale = 'pt-BR') => {
+  return new Intl.NumberFormat(locale).format(amount);
+}
