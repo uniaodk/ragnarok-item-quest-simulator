@@ -166,7 +166,7 @@ controller.buildTemplateListItems = () => {
                 </div>
                 <small class="badge badge-lvl text-bg-primary text-end">
                     <small>Min: ${item.minLvl}</small><br>
-                    <small>Msax: ${item.maxLvl}</small>
+                    <small>Max: ${item.maxLvl}</small>
                 </small>
             </div>
         </div>`
