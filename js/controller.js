@@ -106,8 +106,8 @@ controller.calculateItemBaseExp = (item) => {
     const exp200 = document.getElementById('exp200').checked ? 2 : 0;
     const base50 = document.getElementById('base50').checked ? .5 : 0;
     const base30 = document.getElementById('base30').checked ? .3 : 0;
-    const shareClan = document.getElementById('shareExpClan').checked ? -.5 : 0;
-    return (item.exp * rate) * (1 + [exp200, base50, base30, shareClan].reduce((exp1, exp2) => exp1 + exp2));
+    const shareClan = document.getElementById('shareExpClan').checked ? 2 : 1;
+    return ((item.exp * rate) * (1 + [exp200, base50, base30].reduce((exp1, exp2) => exp1 + exp2))) / shareClan;
 }
 
 controller.getItemsChecked = () => {
